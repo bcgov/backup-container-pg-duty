@@ -70,6 +70,10 @@ function logError(){
   (
     errorMsg="${1}"
     echoRed "[!!ERROR!!] - ${errorMsg}" >&2
+    postMsgToWebhook "${ENVIRONMENT_FRIENDLY_NAME}" \
+                  "${ENVIRONMENT_NAME}" \
+                  "ERROR" \
+                  "${errorMsg}"
     postMsgToPagerDuty "${errorMsg}"
   )
 }
